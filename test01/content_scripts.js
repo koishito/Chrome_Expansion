@@ -1,3 +1,4 @@
 window.onload = function() {
-  alert('test');
+  alert('load');
 }
+  alert('test01');
