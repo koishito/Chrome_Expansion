@@ -1,0 +1,21 @@
+{
+	"manifest_version": 2,
+	"name": "Test Extention",
+	"version": "0.7",
+	"browser_action": {
+		"default_popup": "popup.html",
+		"default_icon": "19px.png",
+		"default_title": "Hello Worldを表示するよ"
+	},
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	"permissions": [
+		"contextMenus",
+		"tabs"
+	],
+	"icons": {
+		"16": "16.png"
+	}
+}
