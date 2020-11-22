@@ -4,7 +4,8 @@
 
 ## Test01 - content_scripts：
 
-ページ新規・移動時に`content_scripts`が実行されて、アラート表示。windows.onLoadが後に表示される。
+ページ新規・移動時にのみ`content_scripts`が実行されて、アラート表示。windows.onLoadが後に表示される。
+- タブ遷移時ごとにJSを実行するには？
 
 ## Test02 - browser_action：
 
@@ -12,7 +13,9 @@
 
 ## Test03 - page_action：
 
-Test02の`browser_action`を`page_action`に変えたもの。`popup.html`のトリガーの指定がないため、タスクバー上のアイコンは無効となり色はグレイスケールとなる。トリガー指定のため、イベントページを用いる。`background.js`に定義を記述する。
+Test02の`browser_action`を`page_action`に変えたもの。`popup.html`のトリガーの指定を設定しないと、タスクバー上のアイコンは無効となり色はグレイスケールとなる。
+
+トリガー指定のため、イベントページを用いる。`background.js`に定義を記述する。
 
 ## Test04 - background-EventPage：
 
