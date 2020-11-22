@@ -14,6 +14,6 @@ Test02の`browser_action`を`page_action`に変えたもの。`popup.html`のト
 
 ## Test04 - background-EventPage：
 
-・chrome.runtime.onInstalled：拡張機能がインストールされた時に呼ばれるイベント
+- chrome.runtime.onInstalled：拡張機能がインストールされた時に呼ばれるイベント
 
-・chrome.runtime.onStartup.addListener：ブラウザ起動時に呼ばれるイベント
+- chrome.runtime.onStartup.addListener：ブラウザ起動時に呼ばれるイベント
