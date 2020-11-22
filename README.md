@@ -1,7 +1,5 @@
 # Chrome_Expansion
-
 Ｃｈｒｏｍｅ拡張機能の作成の記録。
-
 ## Test01 - content_scripts：
 ページ新規・移動時にのみ`content_scripts`が実行されて、アラート表示。windows.onLoadが後に表示される。
 - タブ遷移時ごとにJSを実行するには？
