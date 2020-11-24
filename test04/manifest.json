@@ -1,0 +1,13 @@
+{
+  "name": "Test04",
+  "manifest_version": 2,
+  "version": "1.0",
+  "background": {
+    "scripts": ["event.js"],
+    "persistent": true
+  },
+  "permissions": [
+    "contextMenus",
+    "activeTab"
+  ]
+}

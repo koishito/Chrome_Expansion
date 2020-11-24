@@ -1,7 +1,7 @@
 window.onload = function() {
   alert('onload');
 }
-  alert('test03');
+  alert('test04');
 
 //document.body.addEventListener('keydown', (event) => {console.log(event.key);}) //console_ok
 

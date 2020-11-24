@@ -2,12 +2,22 @@
   "name": "Test03",
   "manifest_version": 2,
   "version": "1.0",
-  "background": {
-    "scripts": ["event.js"],
-    "persistent": true
+
+  "page_action": {
+    "default_icon": {
+        "128": "icon128.png" // タスクバーでのアイコン指定
+    },
+    "default_title": "Ext title",
+    "default_popup": "popup.html"
   },
-  "permissions": [
-    "contextMenus",
-    "activeTab"
-  ]
+
+  "permissions":["declarativeContent"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+
+  "icons": { // 管理画面でのアイコン指定
+    "128": "icon128.png"
+  }
 }

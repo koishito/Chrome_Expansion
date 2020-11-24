@@ -1,0 +1,17 @@
+{
+  "name": "test05",
+  "version": "0.1",
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "commands": {
+    "test": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+X"
+      },
+      "description": "test"
+    }
+  },
+  "permissions": ["commands", "experimental"]
+}
