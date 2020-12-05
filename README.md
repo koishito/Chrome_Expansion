@@ -12,6 +12,10 @@
 - コンテンツスクリプトに送信するときだけchrome.tabs.sendMessageを使います。  
 - chrome.storage APIなら保存したデータを相互にやり取りできます。  
 - コンテンツスクリプトを利用して、現在表示中のページを構成しているDOM要素を読み込んだり、変更したりできます。  
+## ActTab_Extention
+ページ最下部に到達すると、事前に設定したJavaScriptを実行する。  
+- chrome.tabs.onActivated.addListener にて、アクティブタブ切り替え毎にJavaScriptの実行が可能。
+
 ## Test01 - content_scripts：
 ページ新規・移動時にのみ`content_scripts`が実行されて、アラート表示。windows.onLoadが後に表示される。
 - タブ遷移時ごとにJSを実行するには？
