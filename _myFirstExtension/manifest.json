@@ -1,0 +1,12 @@
+{
+ "manifest_version": 2,
+ "description" : "Base Level Extension",
+ "name": "My Cool Extension",
+ "version": "0.1",
+ "icons": {
+    "128": "icon128.png"
+ },
+ "browser_action": {
+   "default_popup": "hello.html"
+ }
+}
