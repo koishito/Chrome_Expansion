@@ -12,13 +12,18 @@
 - コンテンツスクリプトに送信するときだけchrome.tabs.sendMessageを使います。  
 - chrome.storage APIなら保存したデータを相互にやり取りできます。  
 - コンテンツスクリプトを利用して、現在表示中のページを構成しているDOM要素を読み込んだり、変更したりできます。  
+## Run at the bottom
+ページ最下部に到達すると、事前に登録したJavaScriptを実行する。
+目的：なろう、ツギクル 等の次ページのリンクをSPACEキーの押しっぱなしで踏むために作成。  
+- background：スクロール検知処理の登録  
+
 ## ActTab_Extention
-ページ最下部に到達すると、事前に設定したJavaScriptを実行する。  
+アクティブタブ切り替え毎に、alertを出す。
 - chrome.tabs.onActivated.addListener にて、アクティブタブ切り替え毎にJavaScriptの実行が可能。
 
 ## Test01 - content_scripts：
 ページ新規・移動時にのみ`content_scripts`が実行されて、アラート表示。windows.onLoadが後に表示される。
-- タブ遷移時ごとにJSを実行するには？
+- タブ遷移時ごとにJSを実行するには？→上記ActTab_Extentionにて
 
 ## Test02 - browser_action：
 アイコンの指定＆アイコンclick時に`popup.html`を表示。htmlのテキストボックス要素のいろいろ。
@@ -31,4 +36,5 @@ Test02の`browser_action`を`page_action`に変えたもの。`popup.html`のト
 - chrome.runtime.onInstalled：拡張機能がインストールされた時に呼ばれるイベント
 - chrome.runtime.onStartup.addListener：ブラウザ起動時に呼ばれるイベント
 
-## Test05 - ページの最下部でアラート.html(JQueryを使用)
+## Test05 - htmlのみ
+ページの最下部でアラート.html(JQueryを使用)
