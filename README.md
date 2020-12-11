@@ -11,6 +11,7 @@
 - メッセージの送信にはchrome.runtime.sendMessageか、chrome.tabs.sendMessageを使い、メッセージの受信は共にchrome.runtime.onMessage.addListenerを使う。という仕組み。  
 - コンテンツスクリプトに送信するときだけchrome.tabs.sendMessageを使います。  
 - chrome.storage APIなら保存したデータを相互にやり取りできます。  
+- content.jsは、webコンテンツが読み込まれた際に読み込まれます。
 - コンテンツスクリプトを利用して、現在表示中のページを構成しているDOM要素を読み込んだり、変更したりできます。  
 ## Run at the bottom
 ページ最下部に到達すると、事前に登録したJavaScriptを実行する。
