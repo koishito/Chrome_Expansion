@@ -1,18 +1,24 @@
 # Chrome_Expansion
 Ｃｈｒｏｍｅ拡張機能の作成の記録。  
+### popup.html(js)
+- popup.htmlのpopup.jsは、読み込まれるタイミング は、ポップアップ開いた時。
+### background.js
 - バックグラウンドページは機能拡張のロードとともに読み込まれ、常に裏で実行されている。（＝常にメモリに駐在し続ける。）  
 - バックグラウンドページは、現在表示しているページのDOM要素やコンテンツスクリプトとは隔絶されています。  
-- イベントページはバックグラウンドページと同じようにインストールや起動時に読み込まれますが、一定の時間が経過すると無効になり、メモリを開放します。  
 - getBackgroundPageでバックグラウンドページのwindowオブジェクトを取得して、backgroundFunctionメソッドを実行。  
 - バックグラウンドページが無効の場合の対処方法として、runtime.getBackgroundPageを用いる。  
 - バックグラウンドページにて、機能拡張のインストール時に実行されるruntime.onInstalledと、起動時に実行されるruntime.onStartupを利用する。  
+### content.js
+- コンテンツスクリプトを利用して、現在表示中のページを構成しているDOM要素を読み込んだり、変更したりできます。  
+- イベントページはバックグラウンドページと同じようにインストールや起動時に読み込まれますが、一定の時間が経過すると無効になり、メモリを開放します。  
+- content.jsは、webコンテンツが読み込まれる前に読み込まれます。
+### js間の通信
 - Message Passing（メッセージパッシング）という仕組みで、データを送受信する。  
 - メッセージパッシングでの送受信にはJSON形式を用い、データの型は「null, boolean, number, string, array, object」を渡すことができる。  
 - メッセージの送信にはchrome.runtime.sendMessageか、chrome.tabs.sendMessageを使い、メッセージの受信は共にchrome.runtime.onMessage.addListenerを使う。という仕組み。  
 - コンテンツスクリプトに送信するときだけchrome.tabs.sendMessageを使います。  
+### storage
 - chrome.storage APIなら保存したデータを相互にやり取りできます。  
-- content.jsは、webコンテンツが読み込まれた際に読み込まれます。
-- コンテンツスクリプトを利用して、現在表示中のページを構成しているDOM要素を読み込んだり、変更したりできます。  
 ## Run at the bottom
 ページ最下部に到達すると、事前に登録したJavaScriptを実行する。
 目的：なろう、ツギクル 等の次ページのリンクをSPACEキーの押しっぱなしで踏むために作成。  
