@@ -2,9 +2,10 @@
 Chrome拡張機能の作成の記録。  
 #### popup.html(js)
 - popup.htmlのpopup.jsは、読み込まれるタイミングは、ポップアップ開いた時。
-#### background.js
+#### background.js　（eventPageも含む）
 - アクティブタブ遷移時に実行するには：`chrome.runtime.onStartup.addListener`に登録
 - バックグラウンドページは機能拡張のロードとともに読み込まれ、常に裏で実行されている。（＝常にメモリに駐在し続ける。）  
+- イベントページはバックグラウンドページと同じようにインストールや起動時に読み込まれますが、一定の時間が経過すると無効になり、メモリを開放します。  
 - バックグラウンドページは、現在表示しているページのDOM要素やコンテンツスクリプトとは隔絶されています。  
 - `getBackgroundPage`でバックグラウンドページのwindowオブジェクトを取得して、`backgroundFunction`メソッドを実行。  
 - バックグラウンドページが無効の場合の対処方法として、`runtime.getBackgroundPage`を用いる。  
@@ -12,7 +13,6 @@ Chrome拡張機能の作成の記録。
 - `chrome.tabs.executeScript` で `javascript` を画面に挿入することができます。
 #### content.js
 - コンテンツスクリプトを利用して、現在表示中のページを構成しているDOM要素を読み込んだり、変更したりできます。DOMの操作はcontent script側でしかできません。  
-- イベントページはバックグラウンドページと同じようにインストールや起動時に読み込まれますが、一定の時間が経過すると無効になり、メモリを開放します。  
 - content.jsは、webコンテンツが読み込まれる前に読み込まれます。
 - manifest.jsonの`content_scripts.run_at`プロパティで読み込む順番を少しだけ制御できます。
   - `document_start`
