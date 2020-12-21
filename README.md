@@ -32,7 +32,13 @@ Chrome拡張機能の作成の記録。
 
 ## ActTab_Extention
 アクティブタブ切り替え毎に、alertを出す。
-- `chrome.tabs.onActivated.addListener`にて、アクティブタブ切り替え毎に実行するJavaScriptの登録が可能。
+- background.js内にて`chrome.tabs.onActivated.addListener`を実行することにより、アクティブタブ切り替え毎に実行するJavaScriptの登録が可能。
+
+## ActTab_toolTip
+- アクティブタブ切り替え毎に、ツールチップにタブ名を入力。
+
+## Next_article_at_the_bottom
+- 最下端で次の記事を開く。
 
 ## Test01 - content_scripts：
 ページ新規・移動時にのみ`content_scripts`が実行されて、アラート表示。`windows.onLoad`が後に表示される。

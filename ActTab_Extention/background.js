@@ -15,6 +15,8 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
   }]);
 });
 
+alert("background.js");
+
 chrome.tabs.onActivated.addListener( function(info) {
   alert("onActivated");
 });

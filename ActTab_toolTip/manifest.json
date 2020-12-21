@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "ActTab_toolTip",
+  "version": "0.1",
+  "description": "Tooltips update to tab name each time you switch active tabs.",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_title": "コード"
+  },
+  "permissions": ["tabs", "declarativeContent"]
+}
