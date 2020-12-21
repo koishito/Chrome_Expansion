@@ -24,8 +24,8 @@ chrome.tabs.onActivated.addListener(function (info) {
   //   chrome.browserAction.setTitle({ title: tab.title });
 
   // }); 
-
-  chrome.tabs.executeScript({ file: "NextArticle+KakuyomuAtBottom.js" });
+  chrome.declarativeContent.RequestContentScript({js: ["NextArticle+KakuyomuAtBottom.js"]})
+  // chrome.tabs.executeScript({ file: "NextArticle+KakuyomuAtBottom.js" });
 
 
 

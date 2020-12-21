@@ -5,7 +5,7 @@
   "description": "Open the next article at the bottom.",
   "background": {
     "scripts": ["background.js"],
-    "persistent": false
+    "persistent": true
   },
-  "permissions": ["tabs", "declarativeContent"]
+  "permissions": ["tabs", "declarativeContent", "http://*/*", "https://*/*"]
 }
