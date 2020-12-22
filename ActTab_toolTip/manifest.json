@@ -8,6 +8,8 @@
     "persistent": false
   },
   "browser_action": {
+    "browser_style": true,
+    "default_popup": "popup.html",
     "default_title": "コード"
   },
   "permissions": ["tabs", "declarativeContent"]

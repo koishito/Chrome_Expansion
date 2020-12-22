@@ -3,9 +3,15 @@
   "name": "Open_the_next_article_at_the_bottom",
   "version": "0.1",
   "description": "Open the next article at the bottom.",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
   "background": {
     "scripts": ["background.js"],
-    "persistent": true
+    "persistent": false
   },
   "permissions": ["tabs", "declarativeContent", "http://*/*", "https://*/*"]
 }

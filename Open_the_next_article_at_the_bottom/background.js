@@ -4,7 +4,7 @@
 //   chrome.declarativeContent.onPageChanged.addRules([{
 //     conditions: [
 //       // アクションを実行する条件
-//       new chrome.declarativeContent.PageStateMatcher({
+//       new chrome.declarativeContent.RequestContentScript({
 //         pageUrl: {schemes: ['https']}
 //       })
 //     ],
@@ -27,6 +27,13 @@ chrome.tabs.onActivated.addListener(function (info) {
   chrome.declarativeContent.RequestContentScript({js: ["NextArticle+KakuyomuAtBottom.js"]})
   // chrome.tabs.executeScript({ file: "NextArticle+KakuyomuAtBottom.js" });
 
+  // if (url.indexOf("google")>0) {
+  //   chrome.browserAction.disable();
+  //   console.log("browserAction.disable");
+  // } else {
+  //   chrome.browserAction.enable();
+  //   console.log("browserAction.enable");
+  }
 
 
 });

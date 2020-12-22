@@ -36,6 +36,7 @@ Chrome拡張機能の作成の記録。
 
 ## ActTab_toolTip
 - アクティブタブ切り替え毎に、ツールチップにタブ名を入力。
+- urlに、'google'が含まれている場合、アイコン表示を灰色にする。
 
 ## Next_article_at_the_bottom
 - 最下端で次の記事を開く。
