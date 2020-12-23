@@ -28,7 +28,8 @@
     }
   }
 
-  if(nextarticle == ""){
+  console.log("nextarticle : " + nextarticle);
+  if(nextarticle != ""){
     document.addEventListener('scroll',  function() {
       const scrollHeight = Math.max(
         document.body.scrollHeight, document.documentElement.scrollHeight,

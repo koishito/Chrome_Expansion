@@ -1,16 +1,26 @@
 chrome.tabs.onActivated.addListener(function (activeInfo) {
   console.log(activeInfo.tabId);
+  executeScript();
 
-  chrome.tabs.executeScript(activeInfo.tabId, {
-    file: `NextArticleAtBottom.js`
-  });
-  // chrome.tabs.sendMessage(activeInfo.tabId, {message: 'tabsOnActivated'}, function(response){
-  //   if(response == ""){
-  //     // chrome.browserAction.setTitle({ title: "link not found" });
-  //     // chrome.browserAction.disable();
-  //   } else {
-  //     // chrome.browserAction.setTitle({ title: response });
-  //     // chrome.browserAction.enable();
-  //   }
-  // });
+}); 
+
+chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
+  if (changeInfo.status == 'complete' && tab.active) {
+    executeScript();
+
+  }
 });
+
+function executeScript() {
+  chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) { 
+    var url = tabs[0].url;
+    console.log(url, (url.indexOf("chrome") == 0), (url.indexOf("google") >0)); 
+    if (url.indexOf("chrome") == 0) {
+    } else if (url.indexOf("google") >0) {
+    } else {
+      chrome.tabs.executeScript(tabs[0].id, {
+        file: `NextArticleAtBottom.js`
+      });
+    }
+  });
+}
