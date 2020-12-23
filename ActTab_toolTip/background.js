@@ -17,7 +17,7 @@
 
 // alert("background.js");
 
-chrome.tabs.onActivated.addListener(function (info) {
+chrome.tabs.onActivated.addListener(function (activeInfo) {
 
   chrome.tabs.getSelected((tab) => {
     // 現在のタブを取得

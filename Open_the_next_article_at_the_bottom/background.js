@@ -1,39 +1,16 @@
-// // 現時点でのruleをクリア(removeRules)して
-// chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-//   // 新たなruleを追加する
-//   chrome.declarativeContent.onPageChanged.addRules([{
-//     conditions: [
-//       // アクションを実行する条件
-//       new chrome.declarativeContent.RequestContentScript({
-//         pageUrl: {schemes: ['https']}
-//       })
-//     ],
-//     // 実行するアクション
-//     actions: [
-//       new chrome.declarativeContent.ShowPageAction()
-//     ]
-//   }]);
-// });
+chrome.tabs.onActivated.addListener(function (activeInfo) {
+  console.log(activeInfo.tabId);
 
-// alert("background.js");
-
-chrome.tabs.onActivated.addListener(function (info) {
-  // chrome.tabs.getSelected((tab) => {
-  //   // 現在のタブを取得
-  //   console.log(tab.title);
-  //   chrome.browserAction.setTitle({ title: tab.title });
-
-  // }); 
-  chrome.declarativeContent.RequestContentScript({js: ["NextArticle+KakuyomuAtBottom.js"]})
-  // chrome.tabs.executeScript({ file: "NextArticle+KakuyomuAtBottom.js" });
-
-  // if (url.indexOf("google")>0) {
-  //   chrome.browserAction.disable();
-  //   console.log("browserAction.disable");
-  // } else {
-  //   chrome.browserAction.enable();
-  //   console.log("browserAction.enable");
-  }
-
-
+  chrome.tabs.executeScript(activeInfo.tabId, {
+    file: `NextArticleAtBottom.js`
+  });
+  // chrome.tabs.sendMessage(activeInfo.tabId, {message: 'tabsOnActivated'}, function(response){
+  //   if(response == ""){
+  //     // chrome.browserAction.setTitle({ title: "link not found" });
+  //     // chrome.browserAction.disable();
+  //   } else {
+  //     // chrome.browserAction.setTitle({ title: response });
+  //     // chrome.browserAction.enable();
+  //   }
+  // });
 });

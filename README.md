@@ -23,6 +23,8 @@ Chrome拡張機能の作成の記録。
 - Message Passing（メッセージパッシング）という仕組みで、データを送受信する。  
 - メッセージパッシングでの送受信にはJSON形式を用い、データの型は「null, boolean, number, string, array, object」を渡すことができる。  
 - メッセージの送信には`chrome.runtime.sendMessage`か、`chrome.tabs.sendMessage`を使い、メッセージの受信は共に`chrome.runtime.onMessage.addListener`を使う。という仕組み。  
+- **chrome.runtime.sendMessage** は開いているすべての拡張ページ(背景、ポップアップなど)にメッセージを送信します。  
+- **chrome.tabs.sendMessage** は、指定されたタブの拡張子からすべてのコンテンツスクリプトにメッセージを送信します(フレームIDでフィルタリングされる可能性があります)  
 - コンテンツスクリプトに送信するときだけ`chrome.tabs.sendMessage`を使います。  
 #### storage
 - chrome.storage APIなら保存したデータを相互にやり取りできます。  

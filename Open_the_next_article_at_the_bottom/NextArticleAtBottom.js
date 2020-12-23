@@ -1,15 +1,4 @@
-console.log("content.js");
-
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
-  if (request.message == 'tabsOnActivated') {
-    // var nextarticle = NextArticle();
-  }
-  // sendResponse("");
-  // sendResponse(nextarticle);
-  // return true
-});
-
-(function NextArticle(){
+(function (){
   var nextarticle = "";
   if (/^https:\/\/kakuyomu.jp\/works\/\d+\/episodes\/.+$/.test(location.href)){
     //kakuyomu
@@ -60,7 +49,5 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
       };
     });
   }
-
-  return nextarticle;
 
 })();
