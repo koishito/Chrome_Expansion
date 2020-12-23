@@ -1,0 +1,11 @@
+{
+  "manifest_version": 2,
+  "name": "ActTab_bgPurple",
+  "version": "0.1",
+  "description": "Change the background color to purple each time you switch active tabs.",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": ["tabs", "declarativeContent", "http://*/*", "https://*/*"]
+}

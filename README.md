@@ -33,6 +33,9 @@ Chrome拡張機能の作成の記録。
 目的：なろう、ツギクル等の次ページのリンクをSPACEキーの押しっぱなしで踏むために作成。  
 - background：スクロール検知処理の登録  
 
+## ActTab_bgPurple
+アクティブタブ切り替え毎に、背景色を紫に変更する。
+
 ## ActTab_Extention
 アクティブタブ切り替え毎に、alertを出す。
 - background.js内にて`chrome.tabs.onActivated.addListener`を実行することにより、アクティブタブ切り替え毎に実行するJavaScriptの登録が可能。
