@@ -67,3 +67,7 @@ Test02の`browser_action`を`page_action`に変えたもの。`popup.html`のト
 
 ## Test07 - sample
 https://www.366service.com/jp/qa/9a81cc3411a35be88a65bb766437efda
+
+## Test08 - chrome.tabs.executeScript
+ https://lealog.hateblo.jp/entry/2013/01/29/004617
+ background.jsから、アクティブタブにてjsを実行する。 → 動かず

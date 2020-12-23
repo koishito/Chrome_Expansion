@@ -1,0 +1,13 @@
+{
+	"manifest_version": 2,
+	"name": "Test08",
+	"version": "1.0",
+
+	"description": "Test08",
+	"browser_action": {
+	},
+	"background": {
+		"scripts": ["background.js"]
+	},
+ 	"permissions": ["tabs", "http://*.google.co.jp/*"]
+}
