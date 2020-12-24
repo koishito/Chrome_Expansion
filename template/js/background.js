@@ -11,6 +11,21 @@ chrome.runtime.onStartup.addListener(function () {
 
 });
 
+// アクティブタブ遷移時に実行
+chrome.tabs.onActivated.addListener(function (activeInfo) {
+  console.log(activeInfo.tabId);
+  executeScript();
+
+}); 
+
+// 新規・更新時に実行
+chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
+  if (changeInfo.status == 'complete' && tab.active) {
+    executeScript();
+
+  }
+});
+
 // 現時点でのruleをクリア(removeRules)して
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
   // 新たなruleを追加する
@@ -28,7 +43,7 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
   }]);
 });
 
-// options.html からの指示を受け取る
+// 他からの指示を受け取る
 chrome.runtime.onMessage.addListener( function(request,sender,sendResponse) {
 
   var srcCommand = request.command
