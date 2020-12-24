@@ -25,10 +25,13 @@ function executeScript() {
           file: `NextArticleAtBottom.js`,
         },
         function (response) {
-          console.log(`response :` + response[0]);
-          nextarticle = response[0];
+          console.log(`response :"` + response[0] + `"`);
+          var nextarticle = response[0];
+          if(nextarticle != ""){
           chrome.browserAction.setTitle({ title: nextarticle });
           chrome.browserAction.setBadgeText({ text: `set` });
+          
+          }
         }
       );
     }
