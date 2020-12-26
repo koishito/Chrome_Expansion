@@ -1,20 +1,20 @@
 (function (){
-  var nextarticle = "";
-  if (/^https:\/\/kakuyomu.jp\/works\/\d+\/episodes\/.+$/.test(location.href)){
+  const url = location.href;
+  if (/^https:\/\/kakuyomu.jp\/works\/\d+\/episodes\/.+$/.test(url)){
     //kakuyomu
-    var lp = location.href.match(/^https:\/\/kakuyomu.jp\/works\/\d+\/episodes\//)[0];
+    var lp = url.match(/^https:\/\/kakuyomu.jp\/works\/\d+\/episodes\//)[0];
     var dlinks = document.links;
     for (var i = dlinks.length-1; i >= 0; i--){
       //console.log(lpn);
       if((dlinks[i].id == 'contentMain-readNextEpisode') &&
          (dlinks[i].href.match(/^https:\/\/kakuyomu.jp\/works\/\d+\/episodes\//)[0] == lp)){
         //alert(dlinks[i].href);
-        nextarticle = dlinks[i].href;
+        var nextarticle = dlinks[i].href;
         break;
       }
     }
 
-  }else{
+  } else {
     //other
     var tc ='次';
     var dlinks = document.links;
@@ -22,14 +22,14 @@
       if(('textContent' in dlinks[i] ) &&
          (location.hostname == dlinks[i].hostname) &&
          (dlinks[i].textContent.indexOf(tc)==0)){
-        nextarticle = dlinks[i].href;
+        var nextarticle = dlinks[i].href;
         break;
       }
     }
   }
 
   console.log("nextarticle : " + nextarticle);
-  if(nextarticle != ""){
+  if(nextarticle != undefined){
     document.addEventListener('scroll',  function() {
       const scrollHeight = Math.max(
         document.body.scrollHeight, document.documentElement.scrollHeight,
