@@ -1,4 +1,42 @@
 (function (){
+
+  // class nextarticle {
+  //   constructor(json) { /* コンストラクタ */
+  //     this.location = json[location];
+  //     this.urlMatch =json[urlMatch];
+  //     this.elementName = json[elementName];
+  //     this.elementValue = json[elementValue];
+  //     const url = location.href;
+  //     const matchedUrl = url.match(urlMatch)[0];
+  //     if (!matchedUrl) {exit;}
+
+  //     switch (elementName) {
+  //       case `id` :
+  //         if (urlMatch.test(url)){
+  //           var targetElement = document.getElementById(elementValue);
+  //         }
+  //         break;
+
+  //       default :
+  //         var dlinks = document.links;
+  //         for (var i = dlinks.length-1; i >= 0; i--){
+  //           if(('textContent' in dlinks[i] ) && (dlinks[i].textContent.match(elementValue)==0)){
+  //             var targetElement = dlinks[i];
+  //             break;
+  //           }
+  //         }
+  //     }
+
+  //     if ((targetElement != undefined) && (targetElement.href.match(urlMatch)[0] == matchedUrl)) {
+  //       this.nextarticle = targetElement.href
+  //     }
+  //   }
+
+  //   get getNextArticle() {
+  //     return this.nextarticle
+  //   }
+  // }
+
   const url = location.href;
   if (/^https:\/\/kakuyomu.jp\/works\/\d+\/episodes\/.+$/.test(url)){
     //kakuyomu
