@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Open_the_next_article_at_the_bottom",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Open the next article at the bottom.",
   "browser_action": {
     "default_title": "Open_the_next_article_at_the_bottom"

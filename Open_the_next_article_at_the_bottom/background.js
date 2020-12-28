@@ -26,14 +26,15 @@ function executeScript() {
           // console.log(`typeof(response) :"` + typeof(response) + `"`);
           // console.log(`response[0] :"` + response[0] + `"`);
           // console.log(`response :"` + response + `"`);
-          // console.log(`response..toString() :"` + response.toString() + `"`);
+          // console.log(`response.toString() :"` + response.toString() + `"`);
           var nextarticle = response.toString();
           // console.log(`(nextarticle.length > 0 ) :"` + (nextarticle.length > 0 ) + `"`);
           if(nextarticle.length > 0 ) {
-          chrome.browserAction.setTitle({ title: nextarticle });
-          chrome.browserAction.setBadgeText({ text: `set` });
+            chrome.browserAction.setTitle({ title: nextarticle });
+            chrome.browserAction.setBadgeText({ text: `set` });
           
           }
+
         }
       );
     }
