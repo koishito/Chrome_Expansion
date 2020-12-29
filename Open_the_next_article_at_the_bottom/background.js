@@ -16,17 +16,17 @@ function executeScript() {
     chrome.browserAction.setTitle({ title: `Link not found` });
     chrome.browserAction.setBadgeText({ text: `` });
 
-    if ((url.indexOf("http") == 0) && (url.indexOf("google") < 0)) {
+    if ((url.indexOf("http") == 0) && (url.indexOf("google") < 0) && (url.indexOf("chrome") < 0)) {
       chrome.tabs.executeScript(
         tabs[0].id,
         {
           file: `NextArticleAtBottom.js`,
         },
         function (response) {
-          // console.log(`typeof(response) :"` + typeof(response) + `"`);
-          // console.log(`response[0] :"` + response[0] + `"`);
-          // console.log(`response :"` + response + `"`);
-          // console.log(`response.toString() :"` + response.toString() + `"`);
+          console.log(`typeof(response) :"` + typeof(response) + `"`);
+          console.log(`response[0] :"` + response[0] + `"`);
+          console.log(`response :"` + response + `"`);
+          console.log(`response.toString() :"` + response.toString() + `"`);
           var nextarticle = response.toString();
           // console.log(`(nextarticle.length > 0 ) :"` + (nextarticle.length > 0 ) + `"`);
           if(nextarticle.length > 0 ) {
