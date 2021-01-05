@@ -26,6 +26,9 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
   }
 });
 
+// ツールバーアイコンのクリックのイベント
+chrome.browserAction.onClicked.addListener(function(tab) {...});
+
 // 現時点でのruleをクリア(removeRules)して
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
   // 新たなruleを追加する
