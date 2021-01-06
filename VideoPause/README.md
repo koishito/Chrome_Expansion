@@ -10,6 +10,7 @@ If you are playing video on some tab or PIP.
 1. By pressing the icon again, the paused video will be played based on the registered tab information.
 
 ## Version history
+&nbsp; 0.2 : Added **status:'complete'** to **chrome.tabs.query**  
 &nbsp; 0.1 : first release.
 
 ## used **chrome api**

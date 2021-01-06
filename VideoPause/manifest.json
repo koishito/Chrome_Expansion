@@ -1,7 +1,7 @@
 {
      "manifest_version": 2,
      "name": "Video Pause in PIP form",
-     "version": "0.1",
+     "version": "0.2",
      "permissions":[
           "tabs",
           "http://*/*",
@@ -9,7 +9,7 @@
      ],
      "background": {
           "scripts": ["background.js"],
-          "persistent": true
+          "persistent": false
      },
      "browser_action": {
             "name": "Video Pause in PIP form"

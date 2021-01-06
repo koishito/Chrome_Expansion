@@ -7,7 +7,7 @@ chrome.browserAction.onClicked.addListener(
     var targetTabId = parseInt(localStorage.getItem(key));
 
     if (!targetTabId) {
-      chrome.tabs.query({lastFocusedWindow: true},function(curtabs) {
+      chrome.tabs.query({lastFocusedWindow: true, status: 'complete'},function(curtabs) {
         tabs = curtabs;
         executeScript(0);
       });
@@ -25,7 +25,7 @@ chrome.browserAction.onClicked.addListener(
       // console.log(tab.title, tab.url);
       if (!(/^chrome.+/.test(tab.url))) {
         chrome.tabs.executeScript(tab.id, {code: `(document.querySelector("video[src]").paused)`}, function (response) {
-          // console.log(tab.id, tab.url, response);
+          console.log(tab.id, tab.url, response);
           if ((typeof response != "undefined") && (response[0] == false)) {
             chrome.tabs.executeScript(tab.id, {code: `(function(){document.querySelector("video[src]").pause();})();`},() => {});
             setEnv(tab.id, `pause`, tab.title);
