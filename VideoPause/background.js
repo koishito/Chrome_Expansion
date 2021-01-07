@@ -6,6 +6,7 @@ chrome.browserAction.onClicked.addListener(
   function(tab){
     var targetTabId = parseInt(localStorage.getItem(key));
 
+    setEnv(``, ``, ``);
     if (!targetTabId) {
       chrome.tabs.query({lastFocusedWindow: true, status: 'complete'},function(curtabs) {
         tabs = curtabs;
@@ -14,7 +15,6 @@ chrome.browserAction.onClicked.addListener(
 
     } else {
       chrome.tabs.executeScript(targetTabId, {code: `(function(){document.querySelector("video[src]").play();})();`},() => {});
-      setEnv(``, ``, ``);
 
     }
 
