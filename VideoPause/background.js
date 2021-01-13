@@ -11,6 +11,7 @@ chrome.browserAction.onClicked.addListener(
       chrome.tabs.query({lastFocusedWindow: true, status: 'complete'},function(curtabs) {
         tabs = curtabs;
         executeScript(0);
+        // Pauseplayingvideo(curtabs);
       });
 
     } else {
@@ -23,6 +24,27 @@ chrome.browserAction.onClicked.addListener(
       });
 
     }
+
+    // // 
+    // async function Pauseplayingvideo (tabs) {
+    //   console.log(tabs);
+    //   for (let i = 0; i < tabs.length; i++) {
+    //     var tab = tabs[i];
+    //     if (!(/^chrome.+/.test(tab.url))) {
+    //       console.log('0', i, tab.id, tab.url);
+    //       await chrome.tabs.executeScript(tab.id, {code: `(document.querySelector("video[src]").paused)`}, function (response) {
+    //         console.log('1', i, tab.id, tab.url, response);
+    //         if (response[0] === false) {
+    //           (async () => {
+    //             console.log('2 :', i, tab.id, tab.url, response);
+    //             await chrome.tabs.executeScript(tab.id, {code: `(function(){document.querySelector("video[src]").pause();})();`},() => {});
+    //           })();
+    //           setEnv(tab.id, `pause`, tab.title);
+    //         }
+    //       });
+    //     }
+    //   }
+    // }
 
     function executeScript(i) { // This function is a recursive function.
       var tab = tabs[i];
