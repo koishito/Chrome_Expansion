@@ -6,6 +6,7 @@ chrome.browserAction.onClicked.addListener(
   function(tab){
     var targetTabId = parseInt(localStorage.getItem(key));
 
+    setEnv(``, ``, ``);
     if (!targetTabId) {
       chrome.tabs.query({lastFocusedWindow: true, status: 'complete'},function(curtabs) {
         tabs = curtabs;
@@ -20,7 +21,6 @@ chrome.browserAction.onClicked.addListener(
           }
         }
       });
-      setEnv(``, ``, ``);
 
     }
 
@@ -32,7 +32,7 @@ chrome.browserAction.onClicked.addListener(
       if (!(/^chrome.+/.test(tab.url))) {
         chrome.tabs.executeScript(tab.id, {code: `(document.querySelector("video[src]").paused)`}, function (response) {
           console.log(tab.id, tab.url, response);
-          if ((typeof response != "undefined") && (response[0] == false)) {
+          if (response[0] === false) {
             chrome.tabs.executeScript(tab.id, {code: `(function(){document.querySelector("video[src]").pause();})();`},() => {});
             setEnv(tab.id, `pause`, tab.title);
           } else if (!isLastTab) {
