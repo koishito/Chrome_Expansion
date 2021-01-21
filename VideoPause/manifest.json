@@ -4,12 +4,13 @@
      "version": "0.2",
      "permissions":[
           "tabs",
+          "notifications",
           "http://*/*",
           "https://*/*"
      ],
      "background": {
           "scripts": ["background.js"],
-          "persistent": false
+          "persistent": true
      },
      "browser_action": {
             "name": "Video Pause in PIP form"

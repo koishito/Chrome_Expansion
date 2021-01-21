@@ -1,0 +1,14 @@
+{
+  "manifest_version":2,
+  "name":"Content Script Basic",
+  "description": "Content Scriptの最小限の構成を確認する",
+  "version": "1.0.0",
+
+  "content_scripts": [
+      {
+        "run_at":"document_end",
+        "matches": ["<all_urls>"],
+        "js": ["content_script.js"]
+      }
+    ]
+}

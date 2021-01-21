@@ -49,9 +49,9 @@ chrome.browserAction.onClicked.addListener(
     function executeScript(i) { // This function is a recursive function.
       var tab = tabs[i];
       var isLastTab = (i + 1 == tabs.length);
-      // console.log(i, tabs.length);
-      // console.log(tab.title, tab.url);
-      if (!(/^chrome.+/.test(tab.url))) {
+      console.log(i, tabs.length);
+      console.log(tab.title, tab.url);
+      if ((/^http.+/.test(tab.url))) {
         chrome.tabs.executeScript(tab.id, {code: `(document.querySelector("video[src]").paused)`}, function (response) {
           console.log(tab.id, tab.url, response);
           if (response[0] === false) {
