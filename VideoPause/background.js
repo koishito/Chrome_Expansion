@@ -50,11 +50,11 @@ chrome.browserAction.onClicked.addListener(
       var tab = tabs[i];
       var isLastTab = (i + 1 == tabs.length);
       console.log(i, tabs.length);
-      console.log(tab.title, tab.url);
-      if (/^http.+/.test(tab.url) && (tab.favIconUrl != undefined)) {
+      console.log(tab.title, tab.url, tab.favIconUrl);
+      if (/^http.+/.test(tab.favIconUrl)) {
         chrome.tabs.executeScript(tab.id, {code: `(document.querySelector("video[src]").paused)`}, function (response) {
           console.log(tab.id, tab.url, response);
-          if ((response != undefined) && (response[0] === false)) {
+          if (response[0] === false) {
             chrome.tabs.executeScript(tab.id, {code: `(function(){document.querySelector("video[src]").pause();})();`},() => {});
             setEnv(tab.id, `pause`, tab.title);
           } else if (!isLastTab) {
