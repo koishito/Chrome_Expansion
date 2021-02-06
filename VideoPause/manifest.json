@@ -5,8 +5,7 @@
      "permissions":[
           "tabs",
           "notifications",
-          "http://*/*",
-          "https://*/*"
+          "<all_urls>"
      ],
      "background": {
           "scripts": ["background.js"],
