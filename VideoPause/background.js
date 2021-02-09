@@ -25,42 +25,24 @@ chrome.browserAction.onClicked.addListener(
 
     }
 
-    // // 
-    // async function Pauseplayingvideo (tabs) {
-    //   console.log(tabs);
-    //   for (let i = 0; i < tabs.length; i++) {
-    //     var tab = tabs[i];
-    //     if (!(/^chrome.+/.test(tab.url))) {
-    //       console.log('0', i, tab.id, tab.url);
-    //       await chrome.tabs.executeScript(tab.id, {code: `(document.querySelector("video[src]").paused)`}, function (response) {
-    //         console.log('1', i, tab.id, tab.url, response);
-    //         if (response[0] === false) {
-    //           (async () => {
-    //             console.log('2 :', i, tab.id, tab.url, response);
-    //             await chrome.tabs.executeScript(tab.id, {code: `(function(){document.querySelector("video[src]").pause();})();`},() => {});
-    //           })();
-    //           setEnv(tab.id, `pause`, tab.title);
-    //         }
-    //       });
-    //     }
-    //   }
-    // }
-
     function executeScript(i) { // This function is a recursive function.
       var tab = tabs[i];
       var isLastTab = (i + 1 == tabs.length);
       console.log(i, tabs.length);
-      console.log(tab.title, tab.url, tab.favIconUrl);
-      if (/^http.+/.test(tab.favIconUrl)) {
-        chrome.tabs.executeScript(tab.id, {code: `(document.querySelector("video[src]").paused)`}, function (response) {
-          console.log(tab.id, tab.url, response);
-          if (response[0] === false) {
-            chrome.tabs.executeScript(tab.id, {code: `(function(){document.querySelector("video[src]").pause();})();`},() => {});
-            setEnv(tab.id, `pause`, tab.title);
-          } else if (!isLastTab) {
-            executeScript(i + 1);
-          }
-        });
+      console.log(tab.title, tab.url);
+      let errorflg = (tab.url.search(tab.title) < 0);
+      if (/^http.+/.test(tab.url) && errorflg) {
+        try {
+          chrome.tabs.executeScript(tab.id, {code: `(document.querySelector("video[src]").paused)`}, function (response) {
+            console.log(tab.id, tab.url, response);
+            if ((response != undefined) && (response[0] === false)) {
+              chrome.tabs.executeScript(tab.id, {code: `(function(){document.querySelector("video[src]").pause();})();`},() => {});
+              setEnv(tab.id, `pause`, tab.title);
+            } else if (!isLastTab) {
+              executeScript(i + 1);
+            }
+          });
+        } catch {}
 
       } else if (!isLastTab) {
         executeScript(i + 1);
