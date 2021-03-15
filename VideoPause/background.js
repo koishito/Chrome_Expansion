@@ -27,17 +27,21 @@ chrome.browserAction.onClicked.addListener(
 
     function executeScript(i) { // This function is a recursive function.
       var tab = tabs[i];
+      if (typeof(tab) == undefined) {tab = "";}
+      var id = tab.id;
+      var title = tab.title;
+      var url = tab.url;
       var isLastTab = (i + 1 == tabs.length);
       console.log(i, tabs.length);
       console.log(tab.title, tab.url);
-      let errorflg = (tab.url.search(tab.title) < 0);
-      if (/^http.+/.test(tab.url) && errorflg) {
+      let errorflg = (url.search(title) < 0);
+      if (/^http.+/.test(url) && errorflg) {
         try {
-          chrome.tabs.executeScript(tab.id, {code: `(document.querySelector("video[src]").paused)`}, function (response) {
-            console.log(tab.id, tab.url, response);
+          chrome.tabs.executeScript(id, {code: `(document.querySelector("video[src]").paused)`}, function (response) {
+            console.log(id, url, response);
             if ((response != undefined) && (response[0] === false)) {
-              chrome.tabs.executeScript(tab.id, {code: `(function(){document.querySelector("video[src]").pause();})();`},() => {});
-              setEnv(tab.id, `pause`, tab.title);
+              chrome.tabs.executeScript(id, {code: `(function(){document.querySelector("video[src]").pause();})();`},() => {});
+              setEnv(id, `pause`, title);
             } else if (!isLastTab) {
               executeScript(i + 1);
             }
