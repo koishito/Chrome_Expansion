@@ -10,6 +10,7 @@ chrome.browserAction.onClicked.addListener(
     if (!targetTabId) {
       chrome.tabs.query({lastFocusedWindow: true, status: 'complete'},function(curtabs) {
         tabs = curtabs;
+        console.log(tabs);
         executeScript(0);
         // Pauseplayingvideo(curtabs);
       });
@@ -34,7 +35,7 @@ chrome.browserAction.onClicked.addListener(
       var isLastTab = (i + 1 == tabs.length);
       console.log(i, tabs.length);
       console.log(tab.title, tab.url);
-      let errorflg = (url.search(title) < 0);
+      let errorflg = (url.indexOf(title) < 0);
       if (/^http.+/.test(url) && errorflg) {
         try {
           chrome.tabs.executeScript(id, {code: `(document.querySelector("video[src]").paused)`}, function (response) {
@@ -59,6 +60,6 @@ chrome.browserAction.onClicked.addListener(
       chrome.browserAction.setBadgeText({ text: badgeText });
       chrome.browserAction.setTitle({ title: toolTip });
     }
-      
+
   }
 );
